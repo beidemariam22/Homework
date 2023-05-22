@@ -5,28 +5,19 @@ import Exceptions.WeaponMalfunctionException;
 import java.util.List;
 
 public abstract class MilitaryEquipments extends Army{
-    private String nameOfEquipment;
     private String condition;
+    private int serialnum;
+    private String model;
     //private Soldier assignTo;
 
     public MilitaryEquipments(){
-        this.nameOfEquipment=null;
         this.condition=null;
     }
-    public MilitaryEquipments(String nameOfEquipment, String condition, int numSoldiers, List<Aircraft> aircraft, List<Tank> tanks, List<Artillery> artillery){
-        super(numSoldiers,aircraft,tanks,artillery);
-        this.nameOfEquipment=nameOfEquipment;
+    public MilitaryEquipments(int serialnum,String model,String condition, String location){
+        super(location);
         this.condition=condition;
-       // this.assignTo=assignTo;
-    }
-
-
-    public String getNameOfEquipment() {
-        return nameOfEquipment;
-    }
-
-    public void setNameOfEquipment(String nameOfEquipment) {
-        this.nameOfEquipment = nameOfEquipment;
+        this.model=model;
+        this.serialnum=serialnum;
     }
 
     public String getCondition() {
@@ -34,8 +25,28 @@ public abstract class MilitaryEquipments extends Army{
     }
 
     public void setCondition(String condition) {
+
         this.condition = condition;
     }
+    public int getSerialNum() {
+        return serialnum;
+    }
+
+    public void setSerialNumber(int serialNumber) {
+        this.serialnum = serialnum;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+
+
+
     public void weaponcheck() throws WeaponMalfunctionException {
         if (this.condition.equals("Bad")){
             throw new WeaponMalfunctionException("The weapon is not ready for mission because it's condition is "+this.condition);

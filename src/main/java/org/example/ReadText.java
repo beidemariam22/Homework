@@ -22,8 +22,8 @@ public class ReadText {
     int count = uniqueWords.size();
     // Write result to file
       FileUtils.writeStringToFile(new File("output.txt"), String.valueOf(count));
-        System.out.println(words);
-        System.out.println(uniqueWords);
+        System.out.println("Total words"+ words);
+        System.out.println("Unique words" + uniqueWords);
         System.out.println(count);
 
     }

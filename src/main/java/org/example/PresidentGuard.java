@@ -9,8 +9,9 @@ public final class PresidentGuard extends SpecialForces{
         this.presidentguard = 0;
         this.visepresidentguard = 0;
     }
-    public PresidentGuard(String name, int age, String rank,String department,int numsoldiers, List<Aircraft> aircraft, List<Tank> tanks, List<Artillery> artillery, String specialty, int numberOfPresidentGuards, int numberOfVisePresidentGuard){
-        super(name, age, rank,department,numsoldiers,aircraft,tanks,artillery,specialty);
+    public PresidentGuard(String name, int age, String rank,String department,
+                          String location, String specialty, int presidentguard, int visepresidentguard){
+        super(name, age, rank,department,location,specialty);
         this.presidentguard=presidentguard;
         this.visepresidentguard=visepresidentguard;
     }
@@ -28,10 +29,26 @@ public final class PresidentGuard extends SpecialForces{
     }
     @Override
     public  void speak(){
-        System.out.println("I am an officer. My name is " + name + " and I am " + age + " years old."+rank+"General"+ specialty +"army");
+        System.out.println("I am an officer. My name is " + getName() + " and I am " + getAge() + " years old."+getRank()+"General"+ specialty +"army");
     }
     @Override
     public void specialMission(){
         System.out.print("Stand by when the president is under attack");
     }
+    @Override
+    public void status() {
+        if (presidentguard > 0 || visepresidentguard > 0) {
+            System.out.println("The President's Guard is on duty with the following numbers:");
+            if (presidentguard > 0) {
+                System.out.println("- " + presidentguard + " guards for the President");
+            }
+            if (visepresidentguard > 0) {
+                System.out.println("- " + visepresidentguard + " guards for the Vice President");
+            }
+        } else {
+            System.out.println("The President's Guard is not on duty at this time.");
+        }
+    }
+
 }
+

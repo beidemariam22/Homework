@@ -6,16 +6,14 @@ import java.util.List;
 
 public final class Captain extends Officer  {
     public Captain() {
-
     }
-
-    public Captain(String name, int age, String rank,String department, int numsoldiers, List<Aircraft> aircraft, List<Tank> tanks,
-                   List<Artillery> artillery, int yearsOfService) {
-        super(name, age, rank,department, numsoldiers, aircraft, tanks, artillery);
-
+    public Captain(String name, int age, String rank,String department,
+                   String location, int yearsofservice, String branch) {
+        super(name, age, rank,department, location,yearsofservice,branch);
     }
 
     public void planMission() {
+
         System.out.println("Captain plans the mission.");
     }
 

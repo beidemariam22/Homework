@@ -10,25 +10,25 @@ public abstract class SpecialForces extends Soldier implements Isalute {
     public SpecialForces() {
         this.specialty = null;
     }
-    public SpecialForces(String name, int age, String rank,String department, int numsoldiers, List<Aircraft> aircraft, List<Tank> tanks, List<Artillery> artillery, String specialty) {
-        super(name, age, rank, department,numsoldiers, aircraft, tanks, artillery);
+    public SpecialForces(String name, int age, String rank,String department,
+                         String location, String specialty) {
+        super(name, age, rank, department,location);
         this.specialty = specialty;
     }
 
     public abstract void specialMission();
-
     @Override
     public String toString() {
         return "SpecialForces" +
-                "name='" + name +
-                ", age=" + age +
-                ", rank='" + rank +
+                "name='" + getName() +
+                ", age=" + getAge() +
+                ", rank='" + getRank() +
                 ", specialty='" + specialty;
     }
 
     @Override
     public int hashCode() {
-        return this.age;
+        return this.getAge();
     }
 
     @Override
@@ -41,17 +41,17 @@ public abstract class SpecialForces extends Soldier implements Isalute {
         if (obj == null || this.getClass() != obj.getClass()) {
             return false;
         }
-        return this.age == that.age &&
-                this.name.equals(that.name) &&
-                this.rank.equals(that.rank) &&
+        return this.getAge() == that.getAge() &&
+                this.getName().equals(that.getName()) &&
+                this.getRank().equals(that.getRank()) &&
                 this.specialty.equals(that.specialty);
     }
 
     public void validateSoldier() throws SoldierNotFoundException {
-        if (this.age < 18 || this.age > 60) {
-            throw new SoldierNotFoundException("Invalid age for soldier: " + this.age);
+        if (this.getAge() < 18 || this.getAge() > 60) {
+            throw new SoldierNotFoundException("Invalid age for soldier: " + this.getAge());
         }
-        if (this.rank == null || this.rank.trim().isEmpty()) {
+        if (this.getRank() == null || this.getRank().trim().isEmpty()) {
             throw new SoldierNotFoundException("Rank cannot be null or empty");
         }
         if (this.specialty == null || this.specialty.trim().isEmpty()) {

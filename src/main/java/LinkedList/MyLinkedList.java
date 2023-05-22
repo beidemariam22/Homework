@@ -1,4 +1,4 @@
-package org.example;
+package LinkedList;
 
 public class MyLinkedList<T> {
     private Node<T> head;

@@ -1,17 +1,30 @@
 package org.example;
 
-import Interface.Isalute;
-
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.function.Consumer;
 
 public final class LieutenantColonel extends Officer {
+
+    private List<LieutenantColonel> lieutenans = new LinkedList<>();
 
     public LieutenantColonel() {
 
     }
-    public LieutenantColonel(String name, int age, String rank,String department, int numsoldiers, List<Aircraft> aircraft, List<Tank> tanks,
-                             List<Artillery> artillery) {
-        super(name, age, rank,department,numsoldiers,aircraft,tanks,artillery);
+
+    public LieutenantColonel(String name, int age, String rank, String department,
+                             String location, int yearsofservice, String branch) {
+        super(name, age, rank, department, location, yearsofservice, branch);
+
+    }
+
+    public List<LieutenantColonel> getLieutenan() {
+        return lieutenans;
+    }
+
+    public void setLieutenan(List<LieutenantColonel> lieutenans) {
+        this.lieutenans = lieutenans;
     }
 
     public final void oversee() {
@@ -19,10 +32,32 @@ public final class LieutenantColonel extends Officer {
     }
 
     @Override
-    public void color(){
-        System.out.println(outfit);
-        System.out.println(shoes);
-
+    public void status() {
+        System.out.println("Lieutenant Colonel " + getName() + " has served for " + getYearsOfService() + " years.");
+        if (getYearsOfService() >= 20) {
+            System.out.println("Lieutenant Colonel " + getName() + " is eligible for retirement.");
+        } else {
+            System.out.println("Lieutenant Colonel " + getName() + " is not yet eligible for retirement.");
+        }
     }
 
+    public void processLieutenantColonel(Consumer<LieutenantColonel> lieutenanConsumer) {
+        List<LieutenantColonel> lie = new ArrayList<>();
+        for (LieutenantColonel liee : lieutenans) {
+            lieutenanConsumer.accept(liee);
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "LieutenantColonel{" +
+                " Name='" + getName() +
+                ", Age=" + getAge() +
+                ", Rank='" + getRank() +
+                ", YearsOfService" + getYearsOfService() +
+                " ,Branch " + getBranch() + "}";
+    }
 }
+
+
+
