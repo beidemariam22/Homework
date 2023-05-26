@@ -70,6 +70,7 @@ public final class Sergeant extends Soldier {
     }
 
     public void addSoldier(Sergeant sergeant){
+
         sergeants.add(sergeant);
     }
     public List<Sergeant> filterSoldier(Predicate<Sergeant> sergeant) {

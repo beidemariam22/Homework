@@ -10,13 +10,16 @@ import Enums.TankType;
 import Exceptions.InvalidRankException;
 import Exceptions.SoldierNotFoundException;
 import Exceptions.WeaponMalfunctionException;
+import MultiThreading.MyRunnable;
+import MultiThreading.MyThread;
+
 import java.util.*;
 import java.io.IOException;
 import java.util.List;
 import java.util.function.Predicate;
 
 public class Main {
-    public static void main(String[] args) throws SoldierNotFoundException, WeaponMalfunctionException, InvalidRankException, IOException {
+    public static void main(String[] args) throws SoldierNotFoundException, WeaponMalfunctionException, InvalidRankException, IOException, InterruptedException {
 
         PresidentGuard guard= new PresidentGuard("Beide",2," ","groundforce","West","Major",4000,3000);
         // guard.validateSoldier();// guard.salute();
@@ -86,5 +89,22 @@ public class Main {
         Major major= new  Major("Beide", 28,"General","GroundForce","West",20,"Branch");
         List<Officer> filteredOfficer = major.filterMajor(officerFilter -> officerFilter.getAge() > 18 && officerFilter.getAge() < 65);
         System.out.println( filteredOfficer);
+
+
+        MyThread thread1 = new MyThread();
+        thread1.start();
+
+        MyRunnable thread2 = new MyRunnable();
+        Thread thread3 = new Thread(thread2);
+        thread1.join();
+        thread3.start();
+
+        Corporal corporal= new Corporal("Beide",28,"Corporal","groundforce","West");
+        System.out.println(corporal.filteredCorporal((Corporal corp)->{
+            if(corp.getAge()>18 && corp.getAge()<65){
+                return true;
+            }return false;}));
+
     }
+
 }

@@ -28,6 +28,7 @@ public abstract class SpecialForces extends Soldier implements Isalute {
 
     @Override
     public int hashCode() {
+
         return this.getAge();
     }
 

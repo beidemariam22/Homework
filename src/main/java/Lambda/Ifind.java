@@ -1,6 +1,6 @@
 package Lambda;
 
-public interface Ifind {
+public interface Ifind<T> {
 
-    public void create(int value);
+    public void create(T t);
 }
