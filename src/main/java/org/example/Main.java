@@ -3,17 +3,13 @@ package org.example;
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 
-import Enums.ArtilleryType;
-import Enums.Department;
-import Enums.JetType;
 import Enums.TankType;
 import Exceptions.InvalidRankException;
 import Exceptions.SoldierNotFoundException;
 import Exceptions.WeaponMalfunctionException;
-import MultiThreading.MyRunnable;
-import MultiThreading.MyThread;
+import Thread.MyRunnable;
+import Thread.MyThread;
 
-import java.util.*;
 import java.io.IOException;
 import java.util.List;
 import java.util.function.Predicate;
@@ -66,8 +62,8 @@ public class Main {
        sergeantt.addSoldier(new Sergeant("Beide", 28,"General","GroundForce","West",100,200) );
        sergeantt.addSoldier(new Sergeant("Beide", 28,"General","GroundForce","West",100,200) );
 
-        //For anonymous class
-        System.out.println(sergeantt.filterSoldier(new Predicate<Sergeant>() {
+       //For anonymous class
+       System.out.println(sergeantt.filterSoldier(new Predicate<Sergeant>() {
             @Override
             public boolean test(Sergeant sergeant){
                 if(sergeant.getAge()>18 && sergeant.getAge()<65){
@@ -80,16 +76,36 @@ public class Main {
             if(sergeant.getAge()>18 && sergeant.getAge()<65){
                 return true;
             }return false;
-    }));
+        }));
 
+       Captain  capt = new Captain("Beide", 28,"General","GroundForce","West",10,"airforce");
+       capt.addCaptain(new Captain("Beide", 28,"General","GroundForce","West",10,"airforce"));
+       capt.addCaptain(new Captain("Beide", 28,"General","GroundForce","West",10,"airforce"));
+       capt.addCaptain(new Captain("Beide", 28,"General","GroundForce","West",10,"airforce"));
+       capt.addCaptain(new Captain("Beide", 28,"General","GroundForce","West",10,"airforce"));
+       System.out.println(capt.printCaptain(()-> capt));
 
-        LieutenantColonel colonel= new  LieutenantColonel("Beide", 28,"General","GroundForce","West",20,"Branch");
-        colonel.processLieutenantColonel((lieutenanConsumer) -> System.out.println(lieutenanConsumer.getName()));
+       LieutenantColonel colonel= new  LieutenantColonel("Beide", 28,"General","GroundForce","West",20,"Branch");
+       colonel.addLieutenant(new  LieutenantColonel("Beide", 28,"General","GroundForce","West",20,"Branch"));
+       colonel.addLieutenant(new  LieutenantColonel("Beide", 28,"General","GroundForce","West",20,"Branch"));
+       colonel.addLieutenant(new  LieutenantColonel("Beide", 28,"General","GroundForce","West",20,"Branch"));
+       colonel.addLieutenant(new  LieutenantColonel("Beide", 28,"General","GroundForce","West",20,"Branch"));
+       colonel.processLieutenantColonel((lieutenanConsumer) -> System.out.println(lieutenanConsumer));
 
-        Major major= new  Major("Beide", 28,"General","GroundForce","West",20,"Branch");
-        List<Officer> filteredOfficer = major.filterMajor(officerFilter -> officerFilter.getAge() > 18 && officerFilter.getAge() < 65);
-        System.out.println( filteredOfficer);
+       Major major= new  Major("Beide", 28,"General","GroundForce","West",20,"Branch");
+       major.addMajor(new  Major("Beide", 28,"General","GroundForce","West",20,"Branch"));
+       major.addMajor(new  Major("Beide", 28,"General","GroundForce","West",20,"Branch"));
+       major.addMajor(new  Major("Beide", 28,"General","GroundForce","West",20,"Branch"));
+       major.addMajor(new  Major("Beide", 28,"General","GroundForce","West",20,"Branch"));
 
+        List<Major> filteredMajor = major.filterMajor(majorFilter -> majorFilter.getAge() > 18 && majorFilter.getAge() < 65);
+        System.out.println(filteredMajor);
+
+        Corporal corporal= new Corporal("Beide",28,"Corporal","groundforce","West");
+        System.out.println(corporal.filteredCorporal((Corporal corp)->{
+            if(corp.getAge()>18 && corp.getAge()<65){
+                return true;
+            }return false;}));
 
         MyThread thread1 = new MyThread();
         thread1.start();
@@ -98,12 +114,6 @@ public class Main {
         Thread thread3 = new Thread(thread2);
         thread1.join();
         thread3.start();
-
-        Corporal corporal= new Corporal("Beide",28,"Corporal","groundforce","West");
-        System.out.println(corporal.filteredCorporal((Corporal corp)->{
-            if(corp.getAge()>18 && corp.getAge()<65){
-                return true;
-            }return false;}));
 
     }
 

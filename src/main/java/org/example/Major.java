@@ -8,7 +8,7 @@ import java.util.function.Function;
 
 public final class Major extends Officer {
 
-    private List<Officer> officers = new ArrayList<>();
+    private List<Major> majors = new ArrayList<>();
 
     public Major() {
 
@@ -18,12 +18,12 @@ public final class Major extends Officer {
         super(name, age, rank, department, location, yearsofservice, branch);
     }
 
-    public List<Officer> getOfficers() {
-        return officers;
+    public List<Major> getMajors() {
+        return majors;
     }
 
-    public void setOfficers(List<Officer> officers) {
-        this.officers = officers;
+    public void setMajors(List<Major> majors) {
+        this.majors = majors;
     }
 
     public final void coordinate() {
@@ -40,23 +40,23 @@ public final class Major extends Officer {
         }
     }
 
-    public void addSoldier(Officer officer) {
-        officers.add(officer);
+    public void addMajor(Major major) {
+        majors.add(major);
     }
 
-    public List<Officer> filterMajor(Function<Officer, Boolean> officerFilter) {
-        List<Officer> filteredOfficer = new ArrayList<>();
-        for (Officer officer : officers) {
-            if (officerFilter.apply(officer)) {
-                filteredOfficer.add(officer);
+    public List<Major> filterMajor(Function<Major, Boolean> majorFilter) {
+        List<Major> filteredMajor = new ArrayList<>();
+        for (Major major : majors) {
+            if (majorFilter.apply(major)) {
+                filteredMajor.add(major);
             }
         }
-        return filteredOfficer;
+        return filteredMajor;
     }
 
     @Override
     public String toString() {
-        return "Officer{" +
+        return "Major{" +
                 " Name='" + getName() +
                 ", Age=" + getAge() +
                 ", Rank='" + getRank() +

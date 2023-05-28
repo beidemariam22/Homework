@@ -1,4 +1,4 @@
-package MultiThreading;
+package Connection;
 
 
 class Connection {
@@ -9,12 +9,12 @@ class Connection {
     }
 
     public void connect() {
-        System.out.println("Connected to mock database");
+        //System.out.println("Connected to mock database");
         isConnected = true;
     }
 
     public void disconnect() {
-        System.out.println("Disconnected from mock database");
+       // System.out.println("Disconnected from mock database");
         isConnected = false;
     }
 

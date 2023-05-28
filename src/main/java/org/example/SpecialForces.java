@@ -47,7 +47,6 @@ public abstract class SpecialForces extends Soldier implements Isalute {
                 this.getRank().equals(that.getRank()) &&
                 this.specialty.equals(that.specialty);
     }
-
     public void validateSoldier() throws SoldierNotFoundException {
         if (this.getAge() < 18 || this.getAge() > 60) {
             throw new SoldierNotFoundException("Invalid age for soldier: " + this.getAge());

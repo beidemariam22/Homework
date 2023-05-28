@@ -1,4 +1,4 @@
-package MultiThreading;
+package Connection;
 
 import java.util.concurrent.*;
 import java.util.concurrent.locks.*;

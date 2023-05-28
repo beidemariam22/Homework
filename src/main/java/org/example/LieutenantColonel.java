@@ -40,7 +40,9 @@ public final class LieutenantColonel extends Officer {
             System.out.println("Lieutenant Colonel " + getName() + " is not yet eligible for retirement.");
         }
     }
-
+    public void addLieutenant(LieutenantColonel letco){
+        lieutenans.add(letco);
+    }
     public void processLieutenantColonel(Consumer<LieutenantColonel> lieutenanConsumer) {
         List<LieutenantColonel> lie = new ArrayList<>();
         for (LieutenantColonel liee : lieutenans) {

@@ -1,4 +1,4 @@
-package MultiThreading;
+package Thread;
 
 public class MyRunnable implements Runnable{
     public MyRunnable(){
