@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.Predicate;
 
+import static org.example.Aircraft.LOGGER;
+
 public final class Sergeant extends Soldier {
     // Fields
     private int activeseregant;
@@ -41,18 +43,18 @@ public final class Sergeant extends Soldier {
         return inactiveseregant;
     }
 
-    public List<Sergeant> getSoldiers() {
+    public List<Sergeant> getSergeants() {
         return sergeants;
     }
 
-    public void setSoldiers(List<Sergeant> sergeants) {
+    public void setSergeants(List<Sergeant> sergeants) {
         this.sergeants = sergeants;
     }
 
     // Methods
     @Override
     public void speak() {
-        System.out.println("I am an officer. My name is "
+        LOGGER.info("I am an officer. My name is "
                 + getName() + " and I am " + getAge() + " years old. "
                 + getRank() + " General");
     }

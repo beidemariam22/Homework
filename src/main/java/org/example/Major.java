@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 
+import static org.example.Aircraft.LOGGER;
+
 public final class Major extends Officer {
 
     private List<Major> majors = new ArrayList<>();
@@ -28,15 +30,15 @@ public final class Major extends Officer {
 
     public final void coordinate() {
 
-        System.out.println("Major coordinates the operations.");
+        LOGGER.info("Major coordinates the operations.");
     }
 
     public void status() {
         if (getYearsOfService() >= 10) {
-            System.out.println("Major " + getName() + " has served for over 10 years and is eligible for retirement.");
+            LOGGER.info("Major " + getName() + " has served for over 10 years and is eligible for retirement.");
         } else {
             int yearsLeft = 10 - getYearsOfService();
-            System.out.println("Major " + getName() + " has " + yearsLeft + " years left until retirement eligibility.");
+            LOGGER.info("Major " + getName() + " has " + yearsLeft + " years left until retirement eligibility.");
         }
     }
 

@@ -4,6 +4,8 @@ import Exceptions.WeaponMalfunctionException;
 
 import java.util.List;
 
+import static org.example.Aircraft.LOGGER;
+
 public abstract class MilitaryEquipments extends Army{
     private String condition;
     private int serialnum;
@@ -44,20 +46,17 @@ public abstract class MilitaryEquipments extends Army{
         this.model = model;
     }
 
-
-
-
     public void weaponcheck() throws WeaponMalfunctionException {
         if (this.condition.equals("Bad")){
-            throw new WeaponMalfunctionException("The weapon is not ready for mission because it's condition is "+this.condition);
+            throw new WeaponMalfunctionException("The weapon is not ready for mission because it's condition is "+ this.condition);
         }
     }
     public void creatweapon(){
         try{
             weaponcheck();
-            System.out.println("The weapon is ready for mission");
+            LOGGER.info("The weapon is ready for mission");
         }catch(WeaponMalfunctionException e){
-            System.out.println("Error to prepare weapon for mission");
+            LOGGER.error("Error to prepare weapon for mission");
         }
 
     }

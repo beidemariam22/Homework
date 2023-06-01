@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Consumer;
 
+import static org.example.Aircraft.LOGGER;
+
 public final class LieutenantColonel extends Officer {
 
     private List<LieutenantColonel> lieutenans = new LinkedList<>();
@@ -28,23 +30,23 @@ public final class LieutenantColonel extends Officer {
     }
 
     public final void oversee() {
-        System.out.println("Lieutenant Colonel oversees the deployment.");
+        LOGGER.info("Lieutenant Colonel oversees the deployment.");
     }
 
     @Override
     public void status() {
-        System.out.println("Lieutenant Colonel " + getName() + " has served for " + getYearsOfService() + " years.");
+        LOGGER.info("Lieutenant Colonel " + getName() + " has served for " + getYearsOfService() + " years.");
         if (getYearsOfService() >= 20) {
-            System.out.println("Lieutenant Colonel " + getName() + " is eligible for retirement.");
+            LOGGER.info("Lieutenant Colonel " + getName() + " is eligible for retirement.");
         } else {
-            System.out.println("Lieutenant Colonel " + getName() + " is not yet eligible for retirement.");
+            LOGGER.info("Lieutenant Colonel " + getName() + " is not yet eligible for retirement.");
         }
     }
     public void addLieutenant(LieutenantColonel letco){
         lieutenans.add(letco);
     }
     public void processLieutenantColonel(Consumer<LieutenantColonel> lieutenanConsumer) {
-        List<LieutenantColonel> lie = new ArrayList<>();
+       // List<LieutenantColonel> lie = new ArrayList<>();
         for (LieutenantColonel liee : lieutenans) {
             lieutenanConsumer.accept(liee);
         }

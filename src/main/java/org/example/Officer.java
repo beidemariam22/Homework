@@ -2,6 +2,8 @@ package org.example;
 
 import java.util.List;
 
+import static org.example.Aircraft.LOGGER;
+
 public class Officer extends Soldier {
 
     private int yearsofservice;
@@ -34,7 +36,7 @@ public class Officer extends Soldier {
 
     @Override
     public void speak() {
-        System.out.println("I am an officer. My name is " + getName() + " and I am " + getAge() + " years old. " +
+        LOGGER.info("I am an officer. My name is " + getName() + " and I am " + getAge() + " years old. " +
                 "I have a " + getRank() + " rank in " + getDepartment() + " department. I am from the " + branch + " branch.");
     }
 
@@ -44,11 +46,41 @@ public class Officer extends Soldier {
 
     public void status() {
         if (yearsofservice > 20) {
-            System.out.println("I am a veteran officer with over 20 years of service.");
+            LOGGER.info("I am a veteran officer with over 20 years of service.");
         } else if (yearsofservice > 10) {
-            System.out.println("I am an experienced officer with over 10 years of service.");
+            LOGGER.info("I am an experienced officer with over 10 years of service.");
         } else {
-            System.out.println("I am a relatively new officer with less than 10 years of service.");
+            LOGGER.info("I am a relatively new officer with less than 10 years of service.");
         }
+    }
+    @Override
+    public int hashCode() {
+        return this.getAge();
+    }
+    @Override
+    public boolean equals(Object obj) {
+        Officer that = (Officer) obj; //down casting
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || this.getClass() != obj.getClass()) {
+            return false;
+        }
+        return this.getAge() == that.getAge() &&
+                this.getName().equals(that.getName()) &&
+                this.getRank().equals(that.getRank()) &&
+                this.getDepartment().equals(that.getDepartment())&&
+                this.getLocation().equals(that.getLocation())&&
+                this.getYearsOfService() == that.getYearsOfService() &&
+                this.getBranch().equals(that.getBranch());
+    }
+    @Override
+    public String toString() {
+        return "Officer{" +
+                " Name='" + getName() +
+                ", Age=" + getAge() +
+                ", Rank='" + getRank() +
+                ", YearsOfService" + getYearsOfService() +
+                " ,Branch " + getBranch() + "}";
     }
 }

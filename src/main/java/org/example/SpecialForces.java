@@ -5,6 +5,8 @@ import Interface.Isalute;
 
 import java.util.List;
 
+import static org.example.Aircraft.LOGGER;
+
 public abstract class SpecialForces extends Soldier implements Isalute {
     protected String specialty;
     public SpecialForces() {
@@ -18,20 +20,9 @@ public abstract class SpecialForces extends Soldier implements Isalute {
 
     public abstract void specialMission();
     @Override
-    public String toString() {
-        return "SpecialForces" +
-                "name='" + getName() +
-                ", age=" + getAge() +
-                ", rank='" + getRank() +
-                ", specialty='" + specialty;
-    }
-
-    @Override
     public int hashCode() {
-
         return this.getAge();
     }
-
     @Override
     public boolean equals(Object obj) {
 
@@ -58,16 +49,25 @@ public abstract class SpecialForces extends Soldier implements Isalute {
             throw new SoldierNotFoundException("Specialty cannot be null or empty");
         }
 
-        System.out.println("The rest of the code");
+        LOGGER.info("The rest of the code");
     }
     public void createSpecialForces() {
         try {
             validateSoldier();
-            System.out.println("SpecialForces created successfully.");
+            LOGGER.info("SpecialForces created successfully.");
         } catch (SoldierNotFoundException e) {
-            System.out.println("Error creating SpecialForces: " + e.getMessage());
+            LOGGER.error("Error creating SpecialForces: " + e.getMessage());
         }
     }
+    @Override
+    public String toString() {
+        return "SpecialForces" +
+                "name='" + getName() +
+                ", age=" + getAge() +
+                ", rank='" + getRank() +
+                ", specialty='" + specialty;
+    }
+
 }
 
 

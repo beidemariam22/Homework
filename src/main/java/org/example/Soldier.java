@@ -11,6 +11,8 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.function.Predicate;
 
+import static org.example.Aircraft.LOGGER;
+
 public  abstract class Soldier extends Army implements Isalute, Icolorable {
     private String name;
     private int age;
@@ -67,42 +69,40 @@ public  abstract class Soldier extends Army implements Isalute, Icolorable {
     public abstract void speak();
 
     public final void attack() {
-        System.out.println("Soldier attacks!");
+        LOGGER.info("Soldier attacks!");
     }
 
     @Override
     public void status() {
         if (age < 18) {
-            System.out.println("This soldier is too young to serve.");
+            LOGGER.info("This soldier is too young to serve.");
         } else if (age < 25) {
-            System.out.println("This soldier is a young recruit.");
+            LOGGER.info("This soldier is a young recruit.");
         } else if (age < 40) {
-            System.out.println("This soldier is a seasoned veteran.");
+            LOGGER.info("This soldier is a seasoned veteran.");
         } else {
-            System.out.println("This soldier is approaching retirement.");
+            LOGGER.info("This soldier is approaching retirement.");
         }
     }
-
     @Override
     public void salute() {
         for (Rank rank : Rank.values()) {
             if (rank == Rank.GENERAL) {
-                System.out.println("Hand Salute with Palm Outward");
+                LOGGER.info("Hand Salute with Palm Outward");
             } else {
-                System.out.println("Hand Salute");
+                LOGGER.info("Hand Salute");
             }
         }
     }
-
     @Override
     public void color() {
         if (department.equals(Department.GROUNDFORCE)) {
-            System.out.println("Wearing army uniform in color ");
+            LOGGER.info("Wearing army uniform in color ");
         } else if (department.equals(Department.AIRFORCE)) {
 
-            System.out.println("Wearing uniform in color ");
+            LOGGER.info("Wearing uniform in color ");
         } else {
-            System.out.println("No uniform specified for department " + department);
+            LOGGER.info("No uniform specified for department " + department);
         }
     }
 
@@ -115,9 +115,9 @@ public  abstract class Soldier extends Army implements Isalute, Icolorable {
     public void checkrank() {
         try {
             validaterank();
-            System.out.println("The soldier has valid rank");
+            LOGGER.info("The soldier has valid rank");
         } catch (InvalidRankException e) {
-            System.out.println("Error on the rank of the solider");
+            LOGGER.error("Error on the rank of the solider");
         }
     }
 

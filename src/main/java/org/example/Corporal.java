@@ -6,6 +6,8 @@ import Lambda.Ifilter;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.example.Aircraft.LOGGER;
+
 public final class Corporal extends Soldier {
 
     private List<Corporal> corporals = new ArrayList<>();
@@ -28,33 +30,33 @@ public final class Corporal extends Soldier {
 
     public void setSquad() {
 
-        System.out.println("Corporal sets the squad.");
+        LOGGER.info("Corporal sets the squad.");
     }
 
     @Override
     public void speak() {
-        System.out.println("I am an officer. My name is " + getName() + " and I am " + getAge() + " years old." + getRank() + "General");
+        LOGGER.info("I am an officer. My name is " + getName() + " and I am " + getAge() + " years old." + getRank() + "General");
     }
 
     @Override
     public void status() {
         super.status();
         if (getRank().equals(Rank.PRIVATE)) {
-            System.out.println("This Corporal is leading a group of Privates.");
+            LOGGER.info("This Corporal is leading a group of Privates.");
         } else if (getRank().equals(Rank.SERGEANT)) {
-            System.out.println("This Corporal is serving as a squad leader.");
+            LOGGER.info("This Corporal is serving as a squad leader.");
         } else {
-            System.out.println("This Corporal is serving in a higher leadership position.");
+            LOGGER.info("This Corporal is serving in a higher leadership position.");
         }
         if (getAge() >= 60) {
-            System.out.println("This Corporal is eligible for retirement.");
+            LOGGER.info("This Corporal is eligible for retirement.");
         } else {
             int yearsuntilretirement = 60 - getAge();
-            System.out.println("This Corporal has " + yearsuntilretirement + " years until retirement.");
+            LOGGER.info("This Corporal has " + yearsuntilretirement + " years until retirement.");
         }
     }
 
-    public void ListCorporal(Corporal corporal) {
+    public void listCorporal(Corporal corporal) {
         corporals.add(corporal);
     }
 

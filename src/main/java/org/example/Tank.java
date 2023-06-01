@@ -7,6 +7,8 @@ import Interface.Ioperate;
 
 import java.util.*;
 
+import static org.example.Aircraft.LOGGER;
+
 public class Tank extends MilitaryEquipments implements Ioperate, Iattack {
 
     private Queue<Tank> tanks=new LinkedList<>();
@@ -47,31 +49,30 @@ public class Tank extends MilitaryEquipments implements Ioperate, Iattack {
         for (TankType type : TankType.values()) {
             switch (type) {
                 case HEAVY:
-                    System.out.println("The heavy tank can attack with a heavy-caliber gun by  " + type.attackpower+ " Power");
+                    LOGGER.info("The heavy tank can attack with a heavy-caliber gun by  " + type.attackpower+ " Power");
                     break;
                 case MEDIUM:
-                    System.out.println("The medium tank can attack with a high-velocity gun by  " + type.attackpower+ " Power");
+                    LOGGER.info("The medium tank can attack with a high-velocity gun by  " + type.attackpower+ " Power");
                     break;
                 case LIGHT:
-                    System.out.println("The light tank can attack with a single cannon by  " + type.attackpower+ " Power");
+                    LOGGER.info("The light tank can attack with a single cannon by  " + type.attackpower+ " Power");
                     break;
                 default:
-                    System.out.println("Invalid tank type!");
+                    LOGGER.info("Invalid tank type!");
             }
             if (command && enemy) {
-                System.out.println("Tank is attacking with power: " + type.attackpower + " Power");
+                LOGGER.info("Tank is attacking with power: " + type.attackpower + " Power");
             } else {
-                System.out.println("Cannot attack without command or enemy.");
+                LOGGER.info("Cannot attack without command or enemy.");
             }
         }
     }
     @Override
     public void status() {
-        System.out.println("Aircraft Status:");
+        LOGGER.info("Aircraft Status:");
         EquipmentCondition condition = getConditionEnum();
-        System.out.println(condition.getMessage());
+        LOGGER.info(condition.getMessage());
     }
-
     private EquipmentCondition getConditionEnum() {
         String condition = getCondition();
         switch (condition) {

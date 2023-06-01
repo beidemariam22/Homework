@@ -2,8 +2,12 @@ package org.example;
 
 import Enums.Rank;
 import Interface.Isalute;
+import Interface.Ipromote;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static org.example.Aircraft.LOGGER;
 
 public class General extends Officer  {
 
@@ -18,7 +22,7 @@ public class General extends Officer  {
 
     @Override
     public  void speak(){
-        System.out.println("My name is " + getName() + ", " +
+        LOGGER.info("My name is " + getName() + ", " +
                 "I am " + getAge() + " years old" + " I have a "+
                 getRank() + " rank in " + getDepartment()+ " department." );
     }
@@ -26,26 +30,27 @@ public class General extends Officer  {
     public void status() {
         super.status();
         if (getYearsOfService() >= 30) {
-            System.out.println("This General is eligible for retirement.");
+            LOGGER.info("This General is eligible for retirement.");
         } else {
             int yearsUntilRetirement = 30 - getYearsOfService();
-            System.out.println("This General has " + yearsUntilRetirement + " years until retirement.");
+            LOGGER.info("This General has " + yearsUntilRetirement + " years until retirement.");
         }
     }
-    public void makePromotions(List<Soldier> soldiers) {
-        System.out.println("General " + getName() + " makes promotions for the following soldiers:");
-        for (Soldier s : soldiers) {
-            System.out.println("- " + getAge());
-        }
-    }
+
+//    @Override
+//    public void promote() {
+//        List<Soldier> soldiers=new ArrayList<>();
+//        LOGGER.info("General " + getName() + " makes promotions for the following soldiers:");
+//        for (Soldier s : soldiers) {
+//            LOGGER.info("- " + getAge());
+//        }
+//    }
     //overloading
     public void makeStrategy() {
-
-        System.out.println("General makes a strategy!");
+        LOGGER.info("General makes a strategy!");
     }
     public void makeStrategy(String Name){
-
-        System.out.println("General makes a strategy!");
+        LOGGER.info("General makes a strategy!");
     }
 
 }

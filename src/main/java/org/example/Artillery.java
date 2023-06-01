@@ -5,12 +5,15 @@ import Enums.EquipmentCondition;
 import Interface.Iattack;
 import Interface.Icolorable;
 import Interface.Ioperate;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public final class Artillery extends MilitaryEquipments implements Ioperate, Icolorable, Iattack {
+
+    private static final Logger LOGGER = LogManager.getLogger(Artillery.class);
+
     private List<Artillery> artillery = new ArrayList<>();
 
     public Artillery() {
@@ -34,13 +37,13 @@ public final class Artillery extends MilitaryEquipments implements Ioperate, Ico
     @Override
     public void color(){
 
-        System.out.println(artillerys);
+        LOGGER.info(artillerys);
     }
 
     @Override
     public void operators() {
 
-        System.out.println(artilleryoperator);
+        LOGGER.info(artilleryoperator);
     }
 
     public void AddArtillery(Artillery artilleries){
@@ -51,25 +54,25 @@ public final class Artillery extends MilitaryEquipments implements Ioperate, Ico
         for(ArtilleryType artilleryType:ArtilleryType.values())
         switch (artilleryType) {
             case HOWITZER:
-                System.out.println("Firing howitzer with range of " + artilleryType.range + " meters");
+                LOGGER.info("Firing howitzer with range of " + artilleryType.range + " meters");
                 break;
             case MORTAR:
-                System.out.println("Launching mortar with range of " + artilleryType.range + " meters");
+                LOGGER.info("Launching mortar with range of " + artilleryType.range + " meters");
                 break;
             case ROCKET:
-                System.out.println("Firing rocket with range of " + artilleryType.range + " meters");
+                LOGGER.info("Firing rocket with range of " + artilleryType.range + " meters");
                 break;
             default:
-                System.out.println("Invalid artillery type");
+                LOGGER.info("Invalid artillery type");
                 break;
         }
     }
 
     @Override
     public void status() {
-        System.out.println("Aircraft Status:");
+        LOGGER.info("Aircraft Status:");
         EquipmentCondition condition = getConditionEnum();
-        System.out.println(condition.getMessage());
+        LOGGER.info(condition.getMessage());
     }
 
     private EquipmentCondition getConditionEnum() {

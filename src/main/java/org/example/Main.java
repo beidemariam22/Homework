@@ -33,7 +33,7 @@ public class Main {
         aircraft.ThisLinkedList(new Aircraft("Supersonic",202022, "Normal","Good", "East"));
         System.out.println(aircraft.getAircraft());
 
-        aircraft.myMethod();
+        //aircraft.myMethod();
         // aircraft.attack();
         // aircraft.status();
 
@@ -90,19 +90,22 @@ public class Main {
        colonel.addLieutenant(new  LieutenantColonel("Beide", 28,"General","GroundForce","West",20,"Branch"));
        colonel.addLieutenant(new  LieutenantColonel("Beide", 28,"General","GroundForce","West",20,"Branch"));
        colonel.addLieutenant(new  LieutenantColonel("Beide", 28,"General","GroundForce","West",20,"Branch"));
-       colonel.processLieutenantColonel((lieutenanConsumer) -> System.out.println(lieutenanConsumer));
+       colonel.processLieutenantColonel((consumer) -> System.out.println(colonel));
 
-       Major major= new  Major("Beide", 28,"General","GroundForce","West",20,"Branch");
+       Major major= new  Major(  "Beide", 28,"General","GroundForce","West",20,"Branch");
        major.addMajor(new  Major("Beide", 28,"General","GroundForce","West",20,"Branch"));
        major.addMajor(new  Major("Beide", 28,"General","GroundForce","West",20,"Branch"));
        major.addMajor(new  Major("Beide", 28,"General","GroundForce","West",20,"Branch"));
        major.addMajor(new  Major("Beide", 28,"General","GroundForce","West",20,"Branch"));
 
-        List<Major> filteredMajor = major.filterMajor(majorFilter -> majorFilter.getAge() > 18 && majorFilter.getAge() < 65);
-        System.out.println(filteredMajor);
+       List<Major> filteredMajor = major.filterMajor(majorFilter -> majorFilter.getAge() > 18 && majorFilter.getAge() < 65);
+       System.out.println(filteredMajor);
 
-        Corporal corporal= new Corporal("Beide",28,"Corporal","groundforce","West");
-        System.out.println(corporal.filteredCorporal((Corporal corp)->{
+       Corporal corporal= new Corporal("Beide",28,"Corporal","groundforce","West");
+       corporal.listCorporal(new Corporal("Beide",28,"Corporal","groundforce","West"));
+       corporal.listCorporal(new Corporal("Beide",28,"Corporal","groundforce","West"));
+       corporal.listCorporal(new Corporal("Beide",28,"Corporal","groundforce","West"));
+       System.out.println(corporal.filteredCorporal((Corporal corp)->{
             if(corp.getAge()>18 && corp.getAge()<65){
                 return true;
             }return false;}));
