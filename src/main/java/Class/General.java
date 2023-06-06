@@ -1,6 +1,4 @@
-package org.example;
-import Enums.Rank;
-import Interface.Isalute;
+package Class;
 import Interface.Ipromote;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

@@ -1,10 +1,8 @@
-package org.example;
+package Class;
 
 import Exceptions.WeaponMalfunctionException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.util.List;
 
 public abstract class MilitaryEquipments extends Army{
 

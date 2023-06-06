@@ -1,4 +1,4 @@
-package org.example;
+package Class;
 
 import Enums.ArtilleryType;
 import Enums.EquipmentCondition;

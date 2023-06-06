@@ -1,6 +1,6 @@
 package StreamAndReflection;
 
-import org.example.Corporal;
+import Class.Corporal;
 
 import java.util.ArrayList;
 import java.util.List;

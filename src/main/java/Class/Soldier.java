@@ -1,4 +1,4 @@
-package org.example;
+package Class;
 
 import Enums.Department;
 import Enums.Rank;
@@ -7,11 +7,6 @@ import Interface.Icolorable;
 import Interface.Isalute;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.function.Predicate;
 
 
 public  abstract class Soldier extends Army implements Isalute, Icolorable {

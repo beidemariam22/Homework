@@ -1,9 +1,7 @@
-package org.example;
+package Class;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.util.List;
 
 public abstract class Officer extends Soldier {
     private static final Logger LOGGER= LogManager.getLogger(Officer.class);

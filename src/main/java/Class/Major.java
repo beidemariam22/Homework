@@ -1,6 +1,5 @@
-package org.example;
+package Class;
 
-import Interface.Isalute;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

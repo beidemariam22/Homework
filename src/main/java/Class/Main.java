@@ -1,5 +1,4 @@
-package org.example;
-import Enums.EquipmentCondition;
+package Class;
 import Enums.JetType;
 import Enums.Salary;
 import Enums.TankType;

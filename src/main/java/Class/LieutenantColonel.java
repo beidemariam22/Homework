@@ -1,4 +1,4 @@
-package org.example;
+package Class;
 
 import Lambda.Icompute;
 import org.apache.logging.log4j.LogManager;

@@ -1,14 +1,12 @@
-package org.example;
+package Class;
 
 import Enums.EquipmentCondition;
 import Enums.JetType;
-import Exceptions.InvalidMissionException;
 import Interface.Iattack;
 import Interface.Ioperate;
 import java.util.ArrayList;
 import java.util.List;
 
-import Utils.LoggerUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
