@@ -1,10 +1,17 @@
 package Interface;
 
 public interface Ioperate {
-    int numpilot=1;
-    int tankoperator=2;
-    int artilleryoperator=4;
+    int numpilot = 1;
+    int tankoperator = 2;
+    int artilleryoperator = 4;
 
+    void operate();
 
-    public void operators();
+    void operators();
+
+    void navigate();
+
+    void communicate();
+
+    void performMaintenance();
 }

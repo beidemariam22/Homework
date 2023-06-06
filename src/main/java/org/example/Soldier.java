@@ -5,15 +5,17 @@ import Enums.Rank;
 import Exceptions.InvalidRankException;
 import Interface.Icolorable;
 import Interface.Isalute;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.function.Predicate;
 
-import static org.example.Aircraft.LOGGER;
 
 public  abstract class Soldier extends Army implements Isalute, Icolorable {
+    private static final Logger LOGGER= LogManager.getLogger(Soldier.class);
     private String name;
     private int age;
     private String rank;
@@ -111,7 +113,6 @@ public  abstract class Soldier extends Army implements Isalute, Icolorable {
             throw new InvalidRankException("The soldier has invalid rank ");
         }
     }
-
     public void checkrank() {
         try {
             validaterank();

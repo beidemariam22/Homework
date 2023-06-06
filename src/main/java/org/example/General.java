@@ -1,17 +1,17 @@
 package org.example;
-
 import Enums.Rank;
 import Interface.Isalute;
 import Interface.Ipromote;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.example.Aircraft.LOGGER;
 
-public class General extends Officer  {
+public class General extends Officer  implements Ipromote{
 
-
+    private static final Logger LOGGER= LogManager.getLogger(General.class);
     public General() {
 
     }
@@ -36,15 +36,14 @@ public class General extends Officer  {
             LOGGER.info("This General has " + yearsUntilRetirement + " years until retirement.");
         }
     }
-
-//    @Override
-//    public void promote() {
-//        List<Soldier> soldiers=new ArrayList<>();
-//        LOGGER.info("General " + getName() + " makes promotions for the following soldiers:");
-//        for (Soldier s : soldiers) {
-//            LOGGER.info("- " + getAge());
-//        }
-//    }
+    @Override
+    public void promote() {
+         List<Soldier> soldiers=new ArrayList<>();
+         LOGGER.info("General " + getName() + " makes promotions for the following soldiers:");
+         for (Soldier s : soldiers) {
+             LOGGER.info("- " + getAge());
+         }
+     }
     //overloading
     public void makeStrategy() {
         LOGGER.info("General makes a strategy!");

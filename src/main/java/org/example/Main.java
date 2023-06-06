@@ -1,41 +1,54 @@
 package org.example;
-
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
-
+import Enums.EquipmentCondition;
+import Enums.JetType;
+import Enums.Salary;
 import Enums.TankType;
 import Exceptions.InvalidRankException;
 import Exceptions.SoldierNotFoundException;
 import Exceptions.WeaponMalfunctionException;
 import Thread.MyRunnable;
 import Thread.MyThread;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.function.Predicate;
 
 public class Main {
+    private static final Logger LOGGER = LogManager.getLogger(Main.class);
     public static void main(String[] args) throws SoldierNotFoundException, WeaponMalfunctionException, InvalidRankException, IOException, InterruptedException {
 
-        PresidentGuard guard= new PresidentGuard("Beide",2," ","groundforce","West","Major",4000,3000);
-        // guard.validateSoldier();// guard.salute();
-        // guard.createSpecialForces();
+        PresidentGuard guard= new PresidentGuard("Beide",28," ","groundforce","West","Major",4000,3000);
+        //guard.validateSoldier();// guard.salute();
+        //guard.createSpecialForces();
         //guard.validaterank();
         //guard.checkrank();
+        guard.status();
 
-        Aircraft<Object> aircraft = new Aircraft<>("Hypersonic Jet", 202020, "2020_jet", "Good", "East");
+        Aircraft aircraft = new Aircraft<>(JetType.FIGHTER, 123456, "F-16", "Good", "Airbase");
         //aircraft.creatweapon();
-        //aircraft.weaponcheck()
-        ReadText read = new ReadText();
-        read.ReadFile();
-        aircraft.ThisLinkedList(new Aircraft("Hypersonic",202020, "Jet",   "Good", "East"));
-        aircraft.ThisLinkedList(new Aircraft("Hypersonic",202021, "Jet",   "Good", "East"));
-        aircraft.ThisLinkedList(new Aircraft("Supersonic",202022, "Normal","Good", "East"));
+        //aircraft.weaponcheck();
+        System.out.println("newwwwwwww");
+        aircraft.ThisLinkedList(new Aircraft(JetType.FIGHTER, 123456, "F-16", "GOOD", "Airbase"));
+        aircraft.ThisLinkedList(new Aircraft(JetType.BOMBER, 153456, "F-16", "MAINTENANCE_NEEDED", "Airbase"));
+        aircraft.ThisLinkedList(new Aircraft(JetType.TRANSPORT, 213456, "F-16","REFUELING_NEEDED", "Airbase"));
         System.out.println(aircraft.getAircraft());
 
         //aircraft.myMethod();
-        // aircraft.attack();
+        //aircraft.attack();
         // aircraft.status();
+        // Perform operations on the aircraft
+        aircraft.operate();
+        aircraft.attack();
+        aircraft.defend();
+        aircraft.useSpecialAbility();
+        aircraft.retreat();
+        aircraft.operators();
+        aircraft.navigate();
+        aircraft.communicate();
+        aircraft.performMaintenance();
+        aircraft.status();
 
        Artillery artillery = new  Artillery( 202020,"2020_ART","Good", "East");
        artillery.AddArtillery(new Artillery( 202020,"2020_ART","Good", "East"));
@@ -91,6 +104,14 @@ public class Main {
        colonel.addLieutenant(new  LieutenantColonel("Beide", 28,"General","GroundForce","West",20,"Branch"));
        colonel.addLieutenant(new  LieutenantColonel("Beide", 28,"General","GroundForce","West",20,"Branch"));
        colonel.processLieutenantColonel((consumer) -> System.out.println(colonel));
+        List<Double> bonusSalaries = colonel.SalaryBonus(lieutenant -> {
+            // Compute bonus salary for each LieutenantColonel object
+            int yearsOfService = lieutenant.getYearsOfService();
+            double baseSalary = Salary.LIEUTENANT_COLONEL.amount;
+            double bonus = yearsOfService * 1000; // Example calculation: $1000 bonus per year of service
+            return baseSalary + bonus;
+        });
+        System.out.println("Bonus Salaries: " + bonusSalaries);
 
        Major major= new  Major(  "Beide", 28,"General","GroundForce","West",20,"Branch");
        major.addMajor(new  Major("Beide", 28,"General","GroundForce","West",20,"Branch"));
@@ -101,7 +122,7 @@ public class Main {
        List<Major> filteredMajor = major.filterMajor(majorFilter -> majorFilter.getAge() > 18 && majorFilter.getAge() < 65);
        System.out.println(filteredMajor);
 
-       Corporal corporal= new Corporal("Beide",28,"Corporal","groundforce","West");
+       Corporal corporal= new Corporal("Beide",28,   "Corporal",   "groundforce","West");
        corporal.listCorporal(new Corporal("Beide",28,"Corporal","groundforce","West"));
        corporal.listCorporal(new Corporal("Beide",28,"Corporal","groundforce","West"));
        corporal.listCorporal(new Corporal("Beide",28,"Corporal","groundforce","West"));
@@ -117,6 +138,8 @@ public class Main {
         Thread thread3 = new Thread(thread2);
         thread1.join();
         thread3.start();
+        ReadText read = new ReadText();
+        read.ReadFile();
 
     }
 

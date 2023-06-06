@@ -1,13 +1,15 @@
 package org.example;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Predicate;
 
-import static org.example.Aircraft.LOGGER;
-
 public final class Sergeant extends Soldier {
+    private static final Logger LOGGER= LogManager.getLogger(Sergeant.class);
     // Fields
     private int activeseregant;
     private int inactiveseregant;
@@ -70,9 +72,7 @@ public final class Sergeant extends Soldier {
             return "We have no sergeants.";
         }
     }
-
     public void addSoldier(Sergeant sergeant){
-
         sergeants.add(sergeant);
     }
     public List<Sergeant> filterSoldier(Predicate<Sergeant> sergeant) {

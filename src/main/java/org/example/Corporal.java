@@ -2,13 +2,16 @@ package org.example;
 
 import Enums.Rank;
 import Lambda.Ifilter;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.example.Aircraft.LOGGER;
 
 public final class Corporal extends Soldier {
+
+    private static final Logger LOGGER= LogManager.getLogger(Corporal.class);
 
     private List<Corporal> corporals = new ArrayList<>();
 
@@ -68,7 +71,6 @@ public final class Corporal extends Soldier {
             }
         return cor;
     }
-
     @Override
     public String toString() {
         return "Corporals{" +

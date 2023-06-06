@@ -1,12 +1,14 @@
 package org.example;
 
 import Exceptions.WeaponMalfunctionException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
-import static org.example.Aircraft.LOGGER;
-
 public abstract class MilitaryEquipments extends Army{
+
+    private static final Logger LOGGER= LogManager.getLogger(MilitaryEquipments.class);
     private String condition;
     private int serialnum;
     private String model;
@@ -60,4 +62,6 @@ public abstract class MilitaryEquipments extends Army{
         }
 
     }
+
+    //public abstract void operate();
 }

@@ -1,12 +1,15 @@
 package org.example;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Supplier;
-import static org.example.Aircraft.LOGGER;
 
 public final class Captain extends Officer  {
+    private static final Logger LOGGER= LogManager.getLogger(Captain.class);
     private List<Captain> captains=new ArrayList<>();
     public Captain() {
     }

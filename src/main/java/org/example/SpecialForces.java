@@ -2,12 +2,12 @@ package org.example;
 
 import Exceptions.SoldierNotFoundException;
 import Interface.Isalute;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
-
-import static org.example.Aircraft.LOGGER;
-
 public abstract class SpecialForces extends Soldier implements Isalute {
+    private static final Logger LOGGER= LogManager.getLogger(SpecialForces.class);
     protected String specialty;
     public SpecialForces() {
         this.specialty = null;

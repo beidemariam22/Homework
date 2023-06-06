@@ -1,10 +1,13 @@
 package org.example;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.List;
 
-import static org.example.Aircraft.LOGGER;
 
 public final class PresidentGuard extends SpecialForces{
+    private static final Logger LOGGER= LogManager.getLogger(PresidentGuard.class);
     private int presidentguard;
     private int visepresidentguard;
     public PresidentGuard() {
@@ -40,15 +43,15 @@ public final class PresidentGuard extends SpecialForces{
     @Override
     public void status() {
         if (presidentguard > 0 || visepresidentguard > 0) {
-            LOGGER.info("The President's Guard is on duty with the following numbers:");
+            System.out.println("The President's Guard is on duty with the following numbers:");
             if (presidentguard > 0) {
-                LOGGER.info("- " + presidentguard + " guards for the President");
+                System.out.println("- " + presidentguard + " guards for the President");
             }
             if (visepresidentguard > 0) {
-                LOGGER.info("- " + visepresidentguard + " guards for the Vice President");
+                System.out.println("- " + visepresidentguard + " guards for the Vice President");
             }
         } else {
-            LOGGER.info("The President's Guard is not on duty at this time.");
+            System.out.println("The President's Guard is not on duty at this time.");
         }
     }
 

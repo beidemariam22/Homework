@@ -13,7 +13,7 @@ public enum Salary {
     ARTILLERYOPERATOR(150000),
     GENERAL(222680 );
 
-    final double amount;
+    public double amount;
     Salary(double amount){
         this.amount=amount;
     }

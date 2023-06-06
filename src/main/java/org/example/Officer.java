@@ -1,11 +1,12 @@
 package org.example;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.List;
 
-import static org.example.Aircraft.LOGGER;
-
-public class Officer extends Soldier {
-
+public abstract class Officer extends Soldier {
+    private static final Logger LOGGER= LogManager.getLogger(Officer.class);
     private int yearsofservice;
     private String branch;
 
@@ -39,11 +40,6 @@ public class Officer extends Soldier {
         LOGGER.info("I am an officer. My name is " + getName() + " and I am " + getAge() + " years old. " +
                 "I have a " + getRank() + " rank in " + getDepartment() + " department. I am from the " + branch + " branch.");
     }
-
-    public void giveOrders() {
-        System.out.println("Officer gives orders!");
-    }
-
     public void status() {
         if (yearsofservice > 20) {
             LOGGER.info("I am a veteran officer with over 20 years of service.");
